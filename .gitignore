@@ -1,0 +1,11 @@
+node_modules
+build/*
+fbrp
+dist
+asventa-flask
+index.html
+package-lock.json
+__pycache__
+.idea
+stats.json
+yarn.lock
