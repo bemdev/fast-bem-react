@@ -16,7 +16,7 @@ const template = ({ js, css, body }) => `
           <div id="root">${body}</div>
       </body>
       <script async src="/${js}" /></script>
-    </html
->`;
+    </html>
+`;
 
 export default template;
