@@ -1,13 +1,11 @@
-module.exports = {
-    render: component => {
-        console.log(
-            require('./template.js')({
-                js: 'build/main.js',
-                css: 'build/main.css',
-                body: require('react-dom/server').renderToStaticMarkup(
-                    component,
-                ),
-            }),
-        );
-    },
-};
+import template from './template';
+import { renderToStaticMarkup as renderStatic } from 'react-dom/server';
+
+const render = component =>
+    template({
+        js: 'build/main.js',
+        css: 'build/main.css',
+        body: renderStatic(component),
+    });
+
+export default render;
