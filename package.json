@@ -1,25 +1,28 @@
 {
     "name": "pss-bem-react",
-    "version": "1.0.2",
+    "version": "2.0.1",
     "description": "node >= 10.0.0\r python3",
     "scripts": {
-        "start": "uvicorn server:app --reload",
-        "start:production": "NODE_ENV=production uvicorn server:app",
+        "dev": "uvicorn server:app --reload",
+        "build": "NODE_ENV=production webpack --progress",
+        "start": "NODE_ENV=production uvicorn server:app",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
         "@bem-react/classname": "^1.5.12",
         "@bem-react/core": "^3.0.8",
         "@bem-react/di": "^3.1.1",
-        "@yandex/ui": "^3.20.7",
+        "@yandex/ui": "bemdev/yandex-ui#minify",
         "axios": "^0.21.0",
         "css-loader": "^5.0.1",
+        "css-minimizer-webpack-plugin": "^3.0.2",
         "mini-css-extract-plugin": "^1.3.2",
         "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "webpack-livereload-plugin": "^3.0.2"
+        "react-dom": "^17.0.2"
     },
     "devDependencies": {
+        "uglifyjs-webpack-plugin": "^2.2.0",
+        "webpack-livereload-plugin": "^3.0.2",
         "@babel/core": "^7.9.0",
         "babel-loader": "^8.2.2",
         "babel-plugin-transform-react-jsx": "^6.24.1",
