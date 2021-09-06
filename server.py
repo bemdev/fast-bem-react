@@ -3,9 +3,11 @@ from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 from fastapi.responses import StreamingResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.gzip import GZipMiddleware
 
 
 app = FastAPI(docs_url='/api/docs/v1/')
+app.add_middleware(GZipMiddleware, minimum_size=100)
 # app.mount("/build", StaticFiles(directory="build"), name="build")
 
 @app.get('/build/main.js', include_in_schema=False)
