@@ -1,28 +1,37 @@
-var path = require('path');
-var MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// var LiveReloadPlugin = require('webpack-livereload-plugin');
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const MODE =
     process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 module.exports = {
     mode: MODE,
-    target: 'node',
     entry: './src/index.jsx',
     output: {
         path: path.resolve(__dirname, 'build'),
     },
-    // optimization: {
-    //     splitChunks: {
-    //         cacheGroups: {
-    //             vendor: {
-    //                 test: /[\\/]node_modules[\\/]/,
-    //                 name: 'vendors',
-    //                 chunks: 'all',
-    //             },
-    //         },
-    //     },
-    // },
+    optimization: {
+        minimizer: [
+            new CssMinimizerPlugin({
+                minimizerOptions: {
+                    preset: [
+                        'default',
+                        {
+                            discardComments: { removeAll: true },
+                        },
+                    ],
+                },
+            }),
+            new UglifyJsPlugin({
+                extractComments: false,
+                uglifyOptions: {
+                    compress: { dead_code: true, inline: true },
+                },
+            }),
+        ],
+    },
     stats: { preset: 'minimal' },
     resolve: {
         modules: ['node_modules', 'src/components', 'libs'],
@@ -31,7 +40,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
@@ -50,8 +59,5 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
-        // new LiveReloadPlugin({
-        //     appendScriptTag: true,
-        // }),
     ],
 };
