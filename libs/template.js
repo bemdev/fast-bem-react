@@ -16,6 +16,7 @@ const template = ({ js, css, body }) => `
           <div id="root">${body}</div>
       </body>
       <script async src="/${js}" /></script>
+      <script id="data" type="application/json"></script>
     </html>
 `;
 
