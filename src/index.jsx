@@ -13,7 +13,7 @@ if (typeof document !== 'undefined') {
     const store = JSON.parse(data.innerText.replace(/'/gi, '"'));
 
     hydrate(
-        <App view={store.view} className={themeClassName} />,
+        <App {...store} className={themeClassName} />,
         document.getElementById('root'),
     )
 
@@ -21,5 +21,5 @@ if (typeof document !== 'undefined') {
 
 } else {
     const store = JSON.parse(process.argv[2].replace(/'/gi, '"'));
-    console.info(render(<App view={store.view} className={themeClassName} />));
+    console.info(render(<App {...store} className={themeClassName} />));
 }  
