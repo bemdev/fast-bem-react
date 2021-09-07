@@ -1,9 +1,15 @@
 aiofiles==0.7.0
 asgiref==3.4.1
+beautifulsoup4==4.9.3
+bs4==0.0.1
 click==8.0.1
+colorama==0.4.4
 fastapi==0.68.1
+fastapi-crudrouter==0.8.1
 h11==0.12.0
+lxml==4.6.3
 pydantic==1.8.2
+soupsieve==2.2.1
 starlette==0.14.2
 typing-extensions==3.10.0.2
 uvicorn==0.15.0
