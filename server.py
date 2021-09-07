@@ -1,34 +1,47 @@
 from libs.render import render
+from api.router import user_router, doc_router
+
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse
 from fastapi.responses import StreamingResponse
-from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.gzip import GZipMiddleware
 
 
 app = FastAPI(docs_url='/api/docs/v1/')
 app.add_middleware(GZipMiddleware, minimum_size=100)
-# app.mount("/build", StaticFiles(directory="build"), name="build")
+
+#-----------------------------------------------------------------------------#
+#------------------------------Assets endpoints-------------------------------#
+#-----------------------------------------------------------------------------#
+
+def render_assets(path_to_file):
+    def read_file():
+        with open(path_to_file, mode='rb') as file:
+            yield file.read()
+    return StreamingResponse(read_file())
 
 @app.get('/build/main.js', include_in_schema=False)
 def get_js():
-    def read_file():
-        with open('./build/main.js', mode='rb') as file:
-            yield file.read()
-    return StreamingResponse(read_file())
-
+    return render_assets('./build/main.js')
 
 @app.get('/build/main.css', include_in_schema=False)
-def get_js():
-    def read_file():
-        with open('./build/main.css', mode='rb') as file:
-            yield file.read()
-    return StreamingResponse(read_file())
+def get_css():
+    return render_assets('./build/main.css')
+
+#-----------------------------------------------------------------------------#
+#------------------------------SSR endpoints----------------------------------#
+#-----------------------------------------------------------------------------#
 
 @app.get("/", include_in_schema=False)
 def main_page():
-    return StreamingResponse(render(), media_type='text/html')
+    return StreamingResponse(render([]), media_type='text/html')
 
-@app.get('/posts')
-def posts():
-    return { 'id': 1, 'name': 'awd' }
+@app.get("/news", include_in_schema=False)
+def news_page():
+    return StreamingResponse(render({ "view": "index" }), media_type='text/html')
+
+#-----------------------------------------------------------------------------#
+#-------------------------API endpoints with router---------------------------#
+#-----------------------------------------------------------------------------#
+
+app.include_router(user_router)
+app.include_router(doc_router)

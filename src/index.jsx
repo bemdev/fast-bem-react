@@ -9,10 +9,17 @@ import App from 'App/App';
 const themeClassName = cnTheme({ color: 'yandex-default', root: 'default' });
 
 if (typeof document !== 'undefined') {
+    const data = document.getElementById('data');
+    const store = JSON.parse(data.innerText.replace(/'/gi, '"'));
+
     hydrate(
-        <App className={themeClassName} />,
+        <App view={store.view} className={themeClassName} />,
         document.getElementById('root'),
-    );
+    )
+
+    document.getElementById('data').remove();
+
 } else {
-    console.log(render(<App className={themeClassName} />));
-}
+    const store = JSON.parse(process.argv[2].replace(/'/gi, '"'));
+    console.info(render(<App view={store.view} className={themeClassName} />));
+}  
