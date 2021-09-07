@@ -1,7 +1,7 @@
 {
-    "name": "pss-bem-react",
-    "version": "2.0.1",
-    "description": "node >= 10.0.0\r python3",
+    "name": "fast-bem-react",
+    "version": "1.0.1",
+    "description": "node >= 12.13.0\r python3",
     "scripts": {
         "dev": "cross-env NODE_ENV=development uvicorn server:app --reload",
         "build": "cross-env NODE_ENV=production webpack --progress",
