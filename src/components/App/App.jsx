@@ -1,14 +1,15 @@
 import React from 'reactify';
+import { compose } from '@bem-react/core';
 
-import './App.css';
-
+import { Spacer } from '@yandex/ui/Spacer/desktop';
 import { Button } from '@yandex/ui/Button/desktop/bundle';
 import { Text } from '@yandex/ui/Text/desktop/bundle';
-import { Spacer } from '@yandex/ui/Spacer/desktop';
 
-const blockName = React.cn('App')();
+import { AppViewIndex } from './_view/App_view_index';
 
-function App({ className }) {
+export const blockName = React.cn('App')();
+
+const App = ({ className }) => {
     return (
         <div className={`${blockName} ${className}`}>
             <div className="App_content">
@@ -16,14 +17,18 @@ function App({ className }) {
                     <div className="App_logo" />
                 </Spacer>
                 <Text color="inverse" as="p">
-                    Edit <code>src/components/App.jsx</code> and save to reload.
+                    Explore <code>Fast Bem React</code> app and make awesome web pages.
                 </Text>
                 <Button size="m" view="action" className="App-link">
-                    Learn React with BEM
+                    Go read more
                 </Button>
             </div>
         </div>
     );
 }
 
-export default App;
+const withCompose = compose(
+    AppViewIndex
+)(App);
+
+export default withCompose;

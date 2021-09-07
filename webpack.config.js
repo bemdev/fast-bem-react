@@ -2,6 +2,10 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// const LiveReloadPlugin = require('webpack-livereload-plugin');
+
+const webpack = require('webpack')
 
 const MODE =
     process.env.NODE_ENV === 'production' ? 'production' : 'development';
@@ -11,6 +15,9 @@ module.exports = {
     entry: './src/index.jsx',
     output: {
         path: path.resolve(__dirname, 'build'),
+    },
+    performance: {
+        hints: false
     },
     optimization: {
         minimizer: [
@@ -27,14 +34,18 @@ module.exports = {
             new UglifyJsPlugin({
                 extractComments: false,
                 uglifyOptions: {
-                    compress: { dead_code: true, inline: true },
+                    compress: { inline: true },
                 },
             }),
         ],
     },
     stats: { preset: 'minimal' },
     resolve: {
-        modules: ['node_modules', 'src/components', 'libs'],
+        modules: [
+            'node_modules', 
+            'src/components', 
+            'libs'
+        ],
         extensions: ['.jsx', '.js', '.css'],
     },
     module: {
@@ -59,5 +70,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: '[name].css',
         }),
+        // new LiveReloadPlugin(),
+        // new CleanWebpackPlugin(),
     ],
 };
