@@ -1,6 +1,6 @@
 node_modules
 build/*
-fbrp
+fbr
 dist
 asventa-flask
 index.html
