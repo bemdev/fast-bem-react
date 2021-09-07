@@ -4,8 +4,9 @@
     "description": "node >= 12.13.0\r python3",
     "scripts": {
         "dev": "cross-env NODE_ENV=development uvicorn server:app --reload",
-        "build": "cross-env NODE_ENV=production webpack --progress",
+        "build": "rm -rf ./build && cross-env NODE_ENV=production webpack --progress=profile",
         "start": "cross-env NODE_ENV=production uvicorn server:app",
+        "deploy": "yarn build && yarn start",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
@@ -14,22 +15,23 @@
         "@bem-react/di": "^3.1.1",
         "@yandex/ui": "bemdev/yandex-ui#minify",
         "axios": "^0.21.0",
+        "clean-webpack-plugin": "^4.0.0",
         "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "react-dom": "^17.0.2",
+        "webpack-livereload-plugin": "^3.0.2"
     },
     "devDependencies": {
-        "cross-env": "^7.0.3",
         "@babel/core": "^7.9.0",
         "babel-loader": "^8.2.2",
         "babel-plugin-transform-react-jsx": "^6.24.1",
         "babel-preset-react": "^6.24.1",
-        "uglifyjs-webpack-plugin": "^2.2.0",
+        "cross-env": "^7.0.3",
         "css-loader": "^5.0.1",
         "css-minimizer-webpack-plugin": "^3.0.2",
         "mini-css-extract-plugin": "^1.3.2",
+        "uglifyjs-webpack-plugin": "^2.2.0",
         "webpack": "^5.10.0",
-        "webpack-cli": "^4.2.0",
-        "webpack-livereload-plugin": "^3.0.2"
+        "webpack-cli": "^4.2.0"
     },
     "keywords": [],
     "author": "",
