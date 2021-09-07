@@ -1,12 +1,34 @@
-# Server-side render React on Python3
+# Server-side python render bem-react app
 
-node >= 10.0.0
-python3
+- NodeJs >= 12.13.0
+- Python 3.8.5
 
-## See libs path (render.js, render.py)
+## Install dependencies (.js, .py)
 
-## Examples
+---
 
-run server.py
+Install Python dependencies:
 
-## ---
+<code>pip install -r requirements.txt</code>
+
+Install NodeJs dependencies:
+
+<code>yarn install</code>
+
+=====================================
+
+## Start developlemt mode
+
+Run this command in the shell:
+
+<code>yarn dev</code>
+
+=====================================
+
+## Start production mode
+
+Run this command in the shell:
+
+<code>yarn build && yarn start</code>
+
+---
