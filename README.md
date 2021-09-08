@@ -1,7 +1,19 @@
 # Server-side python render bem-react app
 
-- NodeJs >= 12.13.0
-- Python 3.8.5
+-   NodeJs >= 12.13.0
+-   Python 3.8.5
+
+## Setup env
+
+---
+
+Create env:
+
+<code>python -m venv fsb</code>
+
+Use new env:
+
+<code>source ./fsb/bin/activate</code>
 
 ## Install dependencies (.js, .py)
 
