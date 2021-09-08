@@ -6,19 +6,23 @@ import { Button } from '@yandex/ui/Button/desktop/bundle';
 import { Text } from '@yandex/ui/Text/desktop/bundle';
 
 import { AppViewIndex } from './_view/App_view_index';
+import Header from 'Header/Header'
+
+import './App.css'
 
 export const blockName = React.cn('App')();
 
 const App = ({ className }) => {
     return (
         <div className={`${blockName} ${className}`}>
+            <Header />
             <div className="App_content">
                 <Spacer top={40} bottom={20}>
                     <div className="App_logo" />
                 </Spacer>
-                <Text color="inverse" as="p">
+                <Text color="inverse" as="div">
                     <Text color="inverse" as="h1">
-                        FAST BEM REACT
+                        FAST<Text color="inverse" as='small'>__api</Text> BEM REACT<Text color="inverse" as='small'>_ify</Text>
                     </Text>
                     make awesome web pages today.
                 </Text>

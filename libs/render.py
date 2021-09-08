@@ -25,7 +25,7 @@ def build():
 
     if first_boot:
         subprocess.Popen(
-            ['webpack', '--json=stats.json'], stdout=subprocess.PIPE, shell=False)
+            ['webpack', '--json=stats.json'], stdout=subprocess.PIPE, shell=True)
 
     first_boot = False
 
