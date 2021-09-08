@@ -17,7 +17,12 @@ const template = ({ js, css, body }) => `
       </body>
       <script async src="/${js}" /></script>
       <script id="data" type="application/json"></script>
-    </html>
+      ${
+          !production
+              ? '<script src="http://localhost:35729/livereload.js"></script>'
+              : ''
+      }
+     </html>
 `;
 
 export default template;

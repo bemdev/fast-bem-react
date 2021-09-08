@@ -5,6 +5,7 @@ import os
 
 
 env = os.environ.get("NODE_ENV")
+first_boot = True
 
 def render(view):
     if env == 'production':
@@ -13,19 +14,20 @@ def render(view):
     else:
         out = subprocess.run(['node', build(), f"{view}"], stdout=subprocess.PIPE) \
             .stdout.decode().replace('\n', '')
-    
+
     # stream emulator
     for char in connect(out, view):
         yield char.encode()
 
 def build():
+    global first_boot
     build_path = './build/'
 
-    subprocess.Popen(
-        ['rm', '-rf', build_path], stdout=subprocess.PIPE, shell=True).wait()
+    if first_boot:
+        subprocess.Popen(
+            ['webpack', '--json=stats.json'], stdout=subprocess.PIPE, shell=False)
 
-    subprocess.Popen(
-        ['webpack', '--json=stats.json'], stdout=subprocess.PIPE, shell=True).wait()
+    first_boot = False
 
     with open('stats.json', 'r') as file:
         chunk = json.load(file)['assetsByChunkName']
@@ -40,6 +42,3 @@ def connect(html, data):
         .replace("\\", ""))
     return str(soup).replace('\n', '')
 
-    
-
-    
