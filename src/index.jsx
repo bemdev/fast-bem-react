@@ -15,11 +15,10 @@ if (typeof document !== 'undefined') {
     hydrate(
         <App {...store} className={themeClassName} />,
         document.getElementById('root'),
-    )
+    );
 
     document.getElementById('data').remove();
-
 } else {
     const store = JSON.parse(process.argv[2].replace(/'/gi, '"'));
     console.info(render(<App {...store} className={themeClassName} />));
-}  
+}

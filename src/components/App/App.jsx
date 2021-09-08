@@ -13,22 +13,37 @@ const App = ({ className }) => {
     return (
         <div className={`${blockName} ${className}`}>
             <div className="App_content">
-                <Spacer bottom={40}>
+                <Spacer top={40} bottom={20}>
                     <div className="App_logo" />
                 </Spacer>
                 <Text color="inverse" as="p">
-                    Explore <code>Fast Bem React</code> app and make awesome web pages.
+                    <Text color="inverse" as="h1">
+                        FAST BEM REACT
+                    </Text>
+                    make awesome web pages today.
                 </Text>
-                <Button size="m" view="action" className="App-link">
-                    Go read more
-                </Button>
+                <Spacer vertical={10} />
+                <div className={React.cn('App', 'controls')()}>
+                    <Button
+                        size="l"
+                        theme="raised"
+                        view="action"
+                        className="App-link">
+                        Join to memberships
+                    </Button>
+                    <Button
+                        size="l"
+                        view="default"
+                        theme="raised"
+                        className="App-link">
+                        Read documentation
+                    </Button>
+                </div>
             </div>
         </div>
     );
-}
+};
 
-const withCompose = compose(
-    AppViewIndex
-)(App);
+const withCompose = compose(AppViewIndex)(App);
 
 export default withCompose;
