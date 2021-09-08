@@ -1,5 +1,5 @@
 from libs.render import render
-from api.router import user_router, doc_router
+from api.router import user_router, doc_router, assets_router
 
 from fastapi import FastAPI
 from fastapi.responses import StreamingResponse
@@ -10,22 +10,10 @@ app = FastAPI(docs_url='/api/docs/v1/')
 app.add_middleware(GZipMiddleware, minimum_size=100)
 
 #-----------------------------------------------------------------------------#
-#------------------------------Assets endpoints-------------------------------#
+#--------------------------Assets endpoints with router-----------------------#
 #-----------------------------------------------------------------------------#
 
-def render_assets(path_to_file):
-    def read_file():
-        with open(path_to_file, mode='rb') as file:
-            yield file.read()
-    return StreamingResponse(read_file())
-
-@app.get('/build/main.js', include_in_schema=False)
-def get_js():
-    return render_assets('./build/main.js')
-
-@app.get('/build/main.css', include_in_schema=False)
-def get_css():
-    return render_assets('./build/main.css')
+app.include_router(assets_router)
 
 #-----------------------------------------------------------------------------#
 #------------------------------SSR endpoints----------------------------------#
