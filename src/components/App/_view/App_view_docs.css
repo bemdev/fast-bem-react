@@ -1,0 +1,63 @@
+.App_view_docs {
+
+}
+
+.App__content.App__content_type_page {
+    display: flex;
+    flex-direction: row;
+    justify-content: inherit;
+    align-items: inherit;
+    background-color: #000033;
+    font-size: calc(10px + 1vmin);
+    color: white;
+}
+
+.App_view_docs .App__sidebar {
+    /* width: 125px; */
+    height: 100vh;
+    background: var(--color-bg-normal);
+    /* padding-top: 84px; */
+    position: fixed;
+    top: 84px;
+}
+
+.App_view_docs .App__sidebar_position_right {
+    /* width: 300px; */
+    right: 0;
+}
+
+
+.App_view_docs .App__component {
+    width: 100%;
+    /* height: 100vh; */
+    background: var(--color-bg-soft);
+    padding: 84px calc(325px + 42px) 0 calc(125px + 42px);
+    text-align: left;
+    color: var(--color-base);
+}
+
+.App_view_docs .App__component .Spin2 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+.App_view_docs .App__sidebar .Category {
+    display: grid;
+    gap: 12px;
+    padding: 24px 0;
+}
+
+.App_view_docs .App__sidebar .SubCategory a {
+    display: grid;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.App_view_docs .App__sidebar .SubCategory {
+    padding-top: 24px;
+}
+
+.App_view_docs .App__sidebar button {
+    text-align: left;
+}

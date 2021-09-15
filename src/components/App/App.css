@@ -6,6 +6,7 @@ body {
         'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
 }
 
 code {
@@ -22,12 +23,33 @@ code {
     pointer-events: none;
 }
 
-.App_logo {
-    background: #fc0;
-    width: 100px;
-    height: 100px;
+.App_logo-1 {
+    background: #009485;
+    width: 50px;
+    height: 50px;
     border-radius: 12px;
-    animation: App-logo-spin infinite 7s linear;
+    box-shadow: 1px 1px 5px #61dafb;
+    animation: App-logo-spin reverse infinite 1s linear;
+}
+
+
+.App_logo-2 {
+    background: #fc0;
+    width: 75px;
+    height: 75px;
+    border-radius: 12px;
+    box-shadow: 1px 1px 5px #009485;
+    animation: App-logo-spin infinite 2s linear;
+}
+
+
+.App_logo-3 {
+    background: #61dafb;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    box-shadow: 1px 1px 5px #fc0;
+    animation: App-logo-spin infinite 1.5s linear;
 }
 
 .App__controls {
@@ -38,7 +60,7 @@ code {
     gap: 24px;
 }
 
-.App_content {
+.App__content {
     background-color: #000033;
     min-height: 100vh;
     display: flex;
@@ -47,14 +69,17 @@ code {
     justify-content: center;
     font-size: calc(10px + 1vmin);
     color: white;
-    overflow: hidden;
 }
 
 @keyframes App-logo-spin {
     from {
+        border-radius: 0;
         transform: rotate(0deg);
+        box-shadow: 1px 1px 1px;
     }
     to {
+        border-radius: 100px;
         transform: rotate(360deg);
+        box-shadow: 1px 1px 50px;
     }
 }

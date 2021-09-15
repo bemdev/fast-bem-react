@@ -5,7 +5,7 @@ import { Spacer } from '@yandex/ui/Spacer/desktop';
 import { Button } from '@yandex/ui/Button/desktop/bundle';
 import { Text } from '@yandex/ui/Text/desktop/bundle';
 
-import { AppViewIndex } from './_view/App_view_index';
+import { AppViewDocs } from './_view/App_view_docs';
 import Header from 'Header/Header'
 
 import './App.css'
@@ -16,9 +16,11 @@ const App = ({ className }) => {
     return (
         <div className={`${blockName} ${className}`}>
             <Header />
-            <div className="App_content">
-                <Spacer top={40} bottom={20}>
-                    <div className="App_logo" />
+            <div className={React.cn('App', 'content')()}>
+                <Spacer top={40} bottom={20} style={{display: 'flex', alignItems: 'center'}}>
+                    <div className="App_logo-1" />
+                    <div className="App_logo-2" />
+                    <div className="App_logo-3" />
                 </Spacer>
                 <Text color="inverse" as="div">
                     <Text color="inverse" as="h1">
@@ -33,14 +35,14 @@ const App = ({ className }) => {
                         theme="raised"
                         view="action"
                         className="App-link">
-                        Join to memberships
+                        Join to sponsorships
                     </Button>
                     <Button
                         size="l"
                         view="default"
                         theme="raised"
                         className="App-link">
-                        Read documentation
+                        Read motivation
                     </Button>
                 </div>
             </div>
@@ -48,6 +50,6 @@ const App = ({ className }) => {
     );
 };
 
-const withCompose = compose(AppViewIndex)(App);
+const withCompose = compose(AppViewDocs)(App);
 
 export default withCompose;

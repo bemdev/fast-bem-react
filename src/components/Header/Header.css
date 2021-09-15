@@ -3,18 +3,18 @@
     padding: var(--space-xl);
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: fixed;
     width: calc(100% - var(--space-xl)*2);
     background: #000015;
 }
 
-.Header .Header_navigation span.Link {
+.Header .Header_navigation a.Link {
     color: var(--tabs-menu-view-default-outline-color);
     margin-right: var(--space-xl);
     font-size: var(--typography-controls-size-l-font-size);
 }
 
-.Header .Header_navigation span.Link:last-child {
+.Header .Header_navigation a.Link:last-child {
     margin-right: 0;
 }
 
