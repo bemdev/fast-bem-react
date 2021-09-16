@@ -21,11 +21,12 @@ def render(view):
 
 def build():
     global first_boot
+    mode = env == 'production'
     build_path = './build/'
 
     if first_boot:
         subprocess.Popen(
-            ['webpack', '--json=stats.json'], stdout=subprocess.PIPE, shell=True)
+            ['webpack', '--json=stats.json'], stdout=subprocess.PIPE, shell=mode)
 
     first_boot = False
 
