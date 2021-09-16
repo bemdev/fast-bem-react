@@ -9,11 +9,11 @@
 
 Create env:
 
-<code>python -m venv fsb</code>
+<code>python -m venv .env3.8</code>
 
 Use new env:
 
-<code>source ./fsb/bin/activate</code>
+<code>source ./.env3.8/bin/activate</code>
 
 ## Install dependencies (.js, .py)
 
@@ -25,7 +25,7 @@ Install Python dependencies:
 
 Install NodeJs dependencies:
 
-<code>yarn install</code>
+<code>npm install</code>
 
 =====================================
 
@@ -33,7 +33,7 @@ Install NodeJs dependencies:
 
 Run this command in the shell:
 
-<code>yarn dev</code>
+<code>npm run dev</code>
 
 =====================================
 
@@ -41,6 +41,6 @@ Run this command in the shell:
 
 Run this command in the shell:
 
-<code>yarn build && yarn start</code>
+<code>npm run build && npm run start</code>
 
 ---
