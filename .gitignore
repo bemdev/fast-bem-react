@@ -1,6 +1,6 @@
 node_modules
 build/*
-.env3.8
+.env3.8*
 dist
 asventa-flask
 index.html
