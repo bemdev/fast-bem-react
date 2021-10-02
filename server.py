@@ -3,7 +3,7 @@ from api.router import user_router, assets_router
 
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, HTMLResponse
 from fastapi.middleware.gzip import GZipMiddleware
 
 
@@ -23,11 +23,11 @@ app.include_router(assets_router)
 
 @app.get("/", include_in_schema=False)
 def main_page():
-    return StreamingResponse(render([]), media_type='text/html')
+    return HTMLResponse(render([]), media_type='text/html')
 
 @app.get("/docs", include_in_schema=False)
 def docs_page():
-    return StreamingResponse(render({ "view": "docs" }), media_type='text/html')
+    return HTMLResponse(render({ "view": "docs" }), media_type='text/html')
 
 #-----------------------------------------------------------------------------#
 #-------------------------API endpoints with router---------------------------#

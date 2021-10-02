@@ -14,10 +14,7 @@ def render(view):
     else:
         out = subprocess.run(['node', build(), f"{view}"], stdout=subprocess.PIPE) \
             .stdout.decode().replace('\n', '')
-
-    # stream emulator
-    for char in connect(out, view):
-        yield char.encode()
+    return connect(out, view)
 
 def build():
     global first_boot
