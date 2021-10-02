@@ -74,6 +74,7 @@ module.exports = {
                     {
                         loader: 'svg-url-loader',
                         options: {
+                            publicPath: 'public',
                             limit: 8192,
                         },
                     },
